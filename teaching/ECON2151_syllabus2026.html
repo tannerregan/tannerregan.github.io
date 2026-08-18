@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="George Washington University" />
+  <title>ECON 2151 Syllabus — Fall 2026</title>
+  <style>
+    /* ECON 2151 syllabus. Palette and typography follow the GW brand colors
+    ** used on tannerregan.com (assets/css/style.css). */
+    :root{
+      /* Declared so the browser does not apply its own "auto dark mode"
+      ** transformation, which repaints backgrounds but not author text
+      ** colors -- that is what made the schedule table unreadable. */
+      color-scheme:light;
+      --gw-navy:#00223e;
+      --gw-blue:#033c5a;
+      --gw-buff:#d6bf91;
+      --gw-buff-light:#f6f1e8;
+      --ink:#3b3b3b;
+      --muted:#6e6259;
+      --bg:#ffffff;
+      --rule:#e6ded0;
+      --heading:var(--gw-navy);
+      --link:var(--gw-blue);
+      --link-hover:var(--gw-navy);
+      --alert:#a4243b;
+      --band:var(--gw-buff-light);
+      --font:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+    }
+    /* Dark palette: the same GW colors re-balanced for a dark ground — buff
+    ** becomes the accent rule, navy/blue lighten into readable heading and
+    ** link tones. Applied when the reader's OS asks for dark and they have not
+    ** overridden it, or when they explicitly pick dark with the toggle. */
+    @media (prefers-color-scheme:dark){
+      :root:not([data-theme="light"]){
+        color-scheme:dark;
+        --gw-navy:#9dc3e0; --gw-blue:#b7d6ec; --gw-buff:#c2a97c;
+        --ink:#e6e1d9; --muted:#a89c8d; --bg:#16181a;
+        --rule:#3a352c; --band:#20242a; --alert:#ef8b95;
+      }
+    }
+    :root[data-theme="dark"]{
+      color-scheme:dark;
+      --gw-navy:#9dc3e0; --gw-blue:#b7d6ec; --gw-buff:#c2a97c;
+      --ink:#e6e1d9; --muted:#a89c8d; --bg:#16181a;
+      --rule:#3a352c; --band:#20242a; --alert:#ef8b95;
+    }
+    *{ box-sizing:border-box; }
+    html{ -webkit-text-size-adjust:100%; }
+    body{
+      font-family:var(--font); color:var(--ink); background:var(--bg);
+      line-height:1.6; font-size:17px;
+      margin-inline:auto; max-width:46rem;
+      padding:2.5rem 1.25rem 5rem;
+    }
+
+    /* title block */
+    header#title-block-header{
+      border-bottom:3px solid var(--gw-buff);
+      padding-bottom:1rem; margin-bottom:2rem;
+    }
+    h1.title{ font-size:1.9rem; font-weight:700; line-height:1.25;
+              margin:0 0 .4rem; color:var(--gw-navy); }
+    p.author,p.date{ margin:.15rem 0; color:var(--muted); font-size:1rem; }
+
+    /* headings */
+    h1{ font-size:1.45rem; font-weight:700; color:var(--gw-navy);
+        margin:2.75rem 0 .75rem; padding-bottom:.4rem;
+        border-bottom:1px solid var(--gw-buff); }
+    h2{ font-size:1.15rem; font-weight:700; color:var(--gw-blue);
+        margin:1.9rem 0 .5rem; }
+    h3{ font-size:.95rem; font-weight:700; color:var(--muted);
+        margin:1.4rem 0 .4rem; text-transform:uppercase; letter-spacing:.04em; }
+
+    /* text */
+    p{ margin:1em 0; }
+    a{ color:var(--link); text-decoration:none; overflow-wrap:anywhere; }
+    a:hover{ color:var(--link-hover); text-decoration:underline;
+             text-decoration-color:var(--gw-buff); text-decoration-thickness:1px;
+             text-underline-offset:2px; }
+    ul,ol{ padding-left:1.4rem; }
+    li{ margin:.2rem 0; }
+    li>p{ margin:.25rem 0; }
+    li>ol,li>ul{ margin-top:0; }
+    u{ text-decoration:none; font-weight:700; color:var(--gw-blue); }
+    .alert{ color:var(--alert); font-weight:700; }
+
+    /* table of contents */
+    nav#TOC{
+      background:var(--band); border:1px solid var(--gw-buff); border-radius:8px;
+      padding:1rem 1.25rem; margin-bottom:2.5rem; font-size:.94rem;
+    }
+    nav#TOC>ul{ margin:0; padding-left:1.1rem; }
+    nav#TOC li{ margin:.25rem 0; }
+    nav#TOC a{ font-weight:600; }
+
+    /* schedule table */
+    .table-wrap{ overflow-x:auto; margin:1.25rem 0; }
+    table{ border-collapse:collapse; width:100%; font-size:.94rem;
+           font-variant-numeric:lining-nums tabular-nums;
+           color:var(--ink); background:var(--bg); }
+    th,td{ text-align:left; padding:.45rem .7rem; vertical-align:top;
+           color:var(--ink); }
+    thead th{ color:var(--gw-navy); font-size:.8rem;
+              text-transform:uppercase; letter-spacing:.05em;
+              border-top:2px solid var(--gw-navy); border-bottom:1px solid var(--gw-navy); }
+    tbody tr:last-child td{ border-bottom:2px solid var(--gw-navy); }
+    tr.week-start td{ border-top:1px solid var(--rule); }
+    td:first-child{ white-space:nowrap; color:var(--muted); }
+    tr.week-start td:first-child{ color:var(--gw-blue); font-weight:700; }
+
+    /* signature block */
+    .sigline{ display:flex; align-items:baseline; gap:.75rem;
+              margin:2.5rem 0; font-size:1.15rem; }
+    .sigline .rule{ flex:1; border-bottom:1px solid var(--ink); height:1.1em; }
+
+    /* theme toggle */
+    .theme-toggle[hidden]{ display:none; }  /* author display:inline-flex would otherwise beat the UA hidden rule */
+    .theme-toggle{
+      position:fixed; top:.75rem; right:.75rem; z-index:10;
+      display:inline-flex; align-items:center; gap:.4rem;
+      font:inherit; font-size:.78rem; font-weight:700; letter-spacing:.02em;
+      color:var(--gw-blue); background:var(--band);
+      border:1px solid var(--gw-buff); border-radius:999px;
+      padding:.3rem .7rem; cursor:pointer;
+    }
+    .theme-toggle:hover{ color:var(--gw-navy); border-color:var(--gw-navy); }
+    .theme-toggle:focus-visible{ outline:2px solid var(--gw-navy); outline-offset:2px; }
+    .theme-toggle .icon{ font-size:.95rem; line-height:1; }
+
+    @media (max-width:600px){
+      body{ font-size:16px; padding:3rem .9rem 3rem; }
+      h1.title{ font-size:1.55rem; }
+    }
+    @media print{
+      body{ font-size:11pt; max-width:none; padding:0; color:#000; background:#fff; }
+      nav#TOC{ break-after:page; background:transparent; }
+      a{ color:#000; }
+      table,th,td{ color:#000; background:#fff; }
+      h1,h2,h3{ break-after:avoid; }
+      p,li{ orphans:3; widows:3; }
+      .theme-toggle{ display:none; }
+    }
+  </style>
+  <script>
+    // Apply the saved theme before first paint so the page does not flash the
+    // wrong palette. "auto" stores nothing and follows the OS setting.
+    try {
+      var saved = localStorage.getItem("econ2151-theme");
+      if (saved === "light" || saved === "dark") {
+        document.documentElement.setAttribute("data-theme", saved);
+      }
+    } catch (e) { /* private browsing: fall back to the OS setting */ }
+  </script>
+</head>
+<body>
+<button type="button" class="theme-toggle" id="theme-toggle" hidden>
+  <span class="icon" aria-hidden="true"></span><span class="label"></span>
+</button>
+<header id="title-block-header">
+<h1 class="title">ECON 2151 Syllabus — GWU</h1>
+<p class="author">Sections 10 &amp; 11</p>
+<p class="date">Fall 2026</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul></ul>
+</nav>
+<h1 id="course-details">Course details</h1>
+<h2 id="contact-information">Contact information</h2>
+<p><u>Instructor:</u> Prof. Tanner Regan<br />
+<u>E-mail:</u> tanner_regan@gwu.edu<br />
+<u>Campus Address:</u> Monroe Hall, Room 310<br />
+<u>Contact Protocol</u>: *Email* with subject line “ECON2151 -
+[subject]” and include your full name in the email</p>
+<h2 id="office-hours">Office hours</h2>
+<ul>
+<li><p>Thursdays 11:00am–1:00pm, August 27 – December 5.</p></li>
+<li><p>By appointment only (in-person or on zoom)</p></li>
+<li><p>Book a slot here: <a
+href="https://calendly.com/tanner-regan-gwu/office-hours">calendly.com/tanner-regan-gwu/office-hours</a></p></li>
+</ul>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Economics 1011 and 1012 (Principles of Microeconomics and Principles
+of Macroeconomics) are both prerequisites (as stated in the University
+Bulletin). There are no exceptions. Accepted credit as equivalent
+courses from other institutions can apply only if they are reflected on
+your current transcript.</p>
+<h1 id="course-content">Course content</h1>
+<p>This course takes a conventional economic approach to characterizing
+economic development and poverty, examining its causes and identify the
+underlying obstacles, and evaluating potential solutions and viable
+policy approaches. The course makes use of micro- and macro- tools for
+measurement and modelling, evidence from empirical research on the
+impact of specific policies and programs, and case studies.</p>
+<h2 id="key-questions">Key Questions</h2>
+<ul>
+<li><p>Why are some countries rich and others poor?</p></li>
+<li><p>Why have some formerly poor countries made great progress, and
+others so little?</p></li>
+<li><p>What can be done to improve living conditions for poor and
+vulnerable people?</p></li>
+<li><p>How can we measure the impacts of government policies and
+non-governmental programs on improving the well-being of poor and
+vulnerable people?</p></li>
+</ul>
+<h2 id="expected-learning-outcomes">Expected Learning Outcomes</h2>
+<ul>
+<li><p>Describe key ways developing economies differ from advanced
+economies.</p></li>
+<li><p>Compare economic development levels and growth histories across
+countries and regions.</p></li>
+<li><p>Construct and use key economic development
+indicators.</p></li>
+<li><p>Use basic analytic models of growth and
+development and critically assess the implications of their assumptions.</p></li>
+</ul>
+<h2 id="expectations">Expectations</h2>
+<ul>
+<li><p>In class (2.5 hours per week)</p>
+<ul>
+<li><p>ECON2151 is designated as an in-class course, you are expected to attend each class and contribute with questions. Be prepared to get the most out of the classes. Please finish a first read of the week’s assigned text readings and slides before each class.</p></li>
+</ul></li>
+<li><p>Outside of class (5 hours per week)</p>
+<ul>
+<li><p>ECON2151 is designed so that you can do well with about five
+hours of work per week outside of regular class time (in addition to 2.5 hours of class time). This time should be a combination of problem set practice and text and slide review. Of course, students differ and you need to determine the allocation of time that is right for you.</p></li>
+</ul></li>
+</ul>
+<h2 id="reading-and-study-materials">Reading and study materials</h2>
+<h3 id="readings">Readings</h3>
+<ul>
+<li><p>Required Readings</p>
+<ul>
+<li><p>Textbook: <a
+href="https://www.vitalsource.com/products/economic-development-michael-todaro-stephen-c-v9781292291208">Economic
+Development, 13th Ed., Michael Todaro and Stephen Smith, London, UK:
+Pearson (2020)</a>. Available at the campus bookstore, online sources,
+and a low-cost e-book for rent or purchase through <a
+href="https://tinyurl.com/3asezakh">vitalsource.com</a>.</p></li>
+</ul></li>
+<li><p>Additional short readings posted on Blackboard as needed</p></li>
+</ul>
+<p>A specific week-by-week reading schedule can be found in section <a
+href="#schedule" data-reference-type="ref"
+data-reference="schedule">4</a> below.</p>
+<h3 id="class-slides">Class slides</h3>
+<p>Class slides will be made available and are recommended to be
+reviewed in addition to reading the text. The slides are only partial
+outlines of topics, and are not substitutes for readings or lectures.
+Class recordings will NOT be made available.</p>
+<h3 id="practice-problems-ungraded">Practice Problems (ungraded)</h3>
+<p>Supplemental review questions and practice analytic, exercises will be provided throughout the course to help you to improve your understanding and prepare for exams. They will not be graded, but solutions will be provided about a week after the material has been covered in class. It is strongly recommended that students work on these practice exercises independently and throught the semester (do not wait to start them a week before an exam).</p>
+
+<h2 id="AI-policies">Course AI policy</h2>
+I strongly encourage students to use AI tools as a study aid. GWU provides some resources for students at <a href="https://it.gwu.edu/students"
+class="uri">it.gwu.edu/students</a>. The use of AI in quizzes or exams is forbidden. The use of AI on graded course projects is allowed, but must be explicitly and clearly acknowledged on the submission using the template: "I used Artificial Intelligence in the [insert uses] of this document. My use complied with GWU's Academic Integrity policy. In addition, I have verified all sources cited in, or relied upon in the preparation of, this document, and I take full and ultimate responsibility for its content."
+
+<h1 id="grading">Grading</h1>
+<ul>
+<li><p>[2%] Student survey</p>
+<ul>
+<li><p>Due by 11:59pm on September 4th.</p></li>
+<li><p>Complete the survey form at the end of this syllabus.</p></li>
+</ul></li>
+<li><p> [10%] Class quizzes</p>
+<ul>
+<li><p>Ten quizzes, each taken in-class (see section <a href="#schedule"
+data-reference-type="ref" data-reference="schedule">4</a> for schedule, typically they will be on a tuesday). The purpose is to encourage class attendance and engagement with the material on a regular basis. Your three lowest scores will be dropped, but no makeup quizzes will be provided for any reason.</p></li>
+</ul></li>
+<li><p>[30%] Midterm Exam</p>
+<ul>
+<li><p>Scheduled for October 8th during class subject to
+confirmation.</p></li>
+<li><p>All course material (readings, slides, lectures, exercises, etc.) up until the date of the midterm is examinable material.</p></li>
+</ul></li>
+<li><p>[15%] Course project</p>
+<ul>
+<li><p>Due by 11:59pm on November 27th.</p></li>
+<li><p>Late submissions will not be accepted and recieve a grade of zero</p></li>
+<li><p>Detailed assignment guidelines will be posted separately and discussed in class.</p></li>
+</ul></li>
+<li><p>[40%] Final Exam </p>
+<ul>
+<li><p>The exam will take place during the December finals period, exact schedule TBD.</p></li>
+<li><p>All course material (readings, slides, lectures, exercises, etc.)
+is examinable material.</p></li>
+</ul></li>
+<li><p>[3%] Course Evaluation</p>
+<ul>
+<li><p>Due by 11:59pm on December 10th.</p></li>
+<li><p>Complete the course evaluation at the end of the
+semester.</p></li>
+</ul></li>
+</ul>
+
+<h2 id="grading-policies">Grading policies</h2>
+<p><u>DSS accomodation</u>: Any student who may need an accommodation
+based on the potential impact of a disability should contact Disability
+Support Services at <a href="https://disabilitysupport.gwu.edu"
+class="uri">disabilitysupport.gwu.edu</a> to establish eligibility and
+to coordinate reasonable accommodations. The Professor cannot
+determine eligibility, you must do this with DSS as soon as
+possible.<br />
+<u>Make-up Midterm</u>: In fairness to those who complete exam
+preparation on time, a make-up midterm is only allowed in case of
+verified serious illness or death in the family (doctor note and
+contact; obituary or funeral notice). Also see University policy on
+religious holidays below. In special cases such as approved University
+travel impossible to postpone, approval may be considered to take an
+exam earlier - not later - than otherwise scheduled.<br />
+<u>Make-up Final Exam</u>: Students who are not present for the final exam will receive an automatic F. If you missed the final exam due to a documented emergency you will earn an “Incomplete” grade (you need to inform the Professor and provide the required documentation either prior to the exam date or within 3 days following the exam). In this
+case, a University sanctioned incomplete contract will be drawn stating that the final exam will be taken at a mutually agreed upon date at the beginning of the following semester (no later than the first two weeks of the following semester). All “Incomplete” applications are reviewed and approved or denied by the Dean, not by the Professor. Note that the University requires a student to have “a satisfactory explanation for their inability to complete the work of the course during the semester of enrolment” and “satisfactory attendance and performance” for the application to be considered at all.<br />
+<u>Extra-credits</u>: There are no “extra credit” supplements or
+alternatives under any circumstances. This policy maintains transparency and fairness for all students.<br />
+<u>Regrading</u>: Regrading requests may be considered depending on
+circumstances. Any mistakes in summing up points should be flagged
+immediately. For concerns that the grading itself was incorrect,
+students may be able to resubmit their whole assignment for regrading (therefore this may result in a higher or lower grade than what they receive initially).</p>
+<h1 id="schedule">Course schedule</h1>
+<p>The schedule provides an overview of likely dates for topics, and
+corresponding readings. Schedule details will be confirmed through the semester. Text refers to Todaro and Smith, Economic Development, 13th Ed. Please <u>complete readings prior</u> to corresponding class
+meetings.</p>
+<h2 id="week-by-week-schedule">week-by-week schedule</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th style="text-align: left;">Week / Date</th>
+<th style="text-align: left;">Topic(s) and readings</th>
+<th style="text-align: left;">Assignment(s) due &amp; Quizzes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="week-start">
+<td style="text-align: left;">1 &middot; Aug 25 &amp; 27</td>
+<td style="text-align: left;"><strong>1. Characterizing and Defining Development</strong> &mdash; Chapter 1, Sections 1&ndash;1.7</td>
+<td style="text-align: left;"><span class="alert">Student survey, 11:59pm Sept 4</span></td>
+</tr>
+<tr class="week-start">
+<td style="text-align: left;">2 &middot; Sep 1 &amp; 3</td>
+<td style="text-align: left;"><strong>2. Comparative Economic Development</strong> &mdash; Chapter 2, Sections 2&ndash;2.7</td>
+<td style="text-align: left;"><span class="alert">Quiz 1</span></td>
+</tr>
+<tr class="week-start">
+<td style="text-align: left;">3 &middot; Sep 8 &amp; 10</td>
+<td style="text-align: left;"><strong>3. Classic Theories of Growth and Development</strong> &mdash; Chapter 3, Sections 3&ndash;3.6 and Appendix 3.2</td>
+<td style="text-align: left;"><span class="alert">Quiz 2</span></td>
+</tr>
+<tr class="week-start">
+<td style="text-align: left;">4 &middot; Sep 15 &amp; 17</td>
+<td style="text-align: left;"><strong>4. Contemporary Theories of Growth and Development</strong> &mdash; Chapter 4, Sections 4&ndash;4.6</td>
+<td style="text-align: left;"><span class="alert">Quiz 3</span></td>
+</tr>
+<tr class="week-start">
+<td style="text-align: left;">5 &middot; Sep 22 &amp; 24</td>
+<td style="text-align: left;"><strong>5. Poverty, Inequality, and Development</strong> &mdash; Chapter 5, Sections 5&ndash;5.8</td>
+<td style="text-align: left;"><span class="alert">Quiz 4</span></td>
+</tr>
+<tr class="week-start">
+<td style="text-align: left;">6 &middot; Sep 29 &amp; Oct 1</td>
+<td style="text-align: left;"><strong>Introduction to course project</strong> &mdash; read instructions (shared on Blackboard)</td>
+<td style="text-align: left;"><span class="alert">Quiz 5</span></td>
+</tr>
+<tr class="week-start">
+<td style="text-align: left;">7 &middot; Oct 6 &amp; 8</td>
+<td style="text-align: left;"><em>Oct 6:</em> <strong>Review session</strong><br><em>Oct 8:</em> <strong>Midterm Exam</strong> &mdash; held in class, covers all material to date</td>
+<td style="text-align: left;"><span class="alert">Midterm Exam, in-class Oct 8</span></td>
+</tr>
+<tr class="week-start">
+<td style="text-align: left;">8 &middot; Oct 15</td>
+<td style="text-align: left;"><em>Oct 13: no class &mdash; Fall Break</em><br><em>Oct 15:</em> <strong>6. International Organisations</strong> &mdash; Chapter 11, Section 11.6; Chapter 13, Section 13.1 and Boxes 13.1 and 13.2</td>
+<td style="text-align: left;">&mdash;</td>
+</tr>
+<tr class="week-start">
+<td style="text-align: left;">9 &middot; Oct 20 &amp; 22</td>
+<td style="text-align: left;"><strong>7. Population and Development</strong> &mdash; Chapter 6, Sections 6&ndash;6.6</td>
+<td style="text-align: left;">&mdash;</td>
+</tr>
+<tr class="week-start">
+<td style="text-align: left;">10 &middot; Oct 27 &amp; 29</td>
+<td style="text-align: left;"><strong>8. Urbanization and Development</strong> &mdash; Chapter 7, Sections 7&ndash;7.4</td>
+<td style="text-align: left;"><span class="alert">Quiz 6</span></td>
+</tr>
+<tr class="week-start">
+<td style="text-align: left;">11 &middot; Nov 3 &amp; 5</td>
+<td style="text-align: left;"><strong>9. Rural&ndash;Urban Migration</strong> &mdash; Chapter 7, Sections 7.5&ndash;7.7</td>
+<td style="text-align: left;"><span class="alert">Quiz 7</span></td>
+</tr>
+<tr class="week-start">
+<td style="text-align: left;">12 &middot; Nov 10 &amp; 12</td>
+<td style="text-align: left;"><strong>10. Education and Health</strong> &mdash; Chapter 8, Sections 8&ndash;8.8</td>
+<td style="text-align: left;"><span class="alert">Quiz 8</span></td>
+</tr>
+<tr class="week-start">
+<td style="text-align: left;">13 &middot; Nov 17</td>
+<td style="text-align: left;"><em>Nov 17:</em> <strong>11. Agriculture and Rural Development</strong> &mdash; Chapter 9, Sections 9&ndash;9.6<br><em>Nov 19: <span class="alert">class cancelled</span></em> &mdash; optional workshop at the World Bank (details to follow)</td>
+<td style="text-align: left;"><span class="alert">Quiz 9</span></td>
+</tr>
+<tr class="week-start">
+<td style="text-align: left;">14 &middot; Nov 24 &amp; 26</td>
+<td style="text-align: left;"><em>No class &mdash; Thanksgiving Break (Nov 23&ndash;28)</em></td>
+<td style="text-align: left;"><span class="alert">Course project, 11:59pm Nov 27</span></td>
+</tr>
+<tr class="week-start">
+<td style="text-align: left;">15 &middot; Dec 1 &amp; 3</td>
+<td style="text-align: left;"><strong>12. Environment and Development</strong> &mdash; Chapter 10, Sections 10&ndash;10.6</td>
+<td style="text-align: left;"><span class="alert">Quiz 10</span></td>
+</tr>
+<tr class="week-start">
+<td style="text-align: left;">16 &middot; Dec 8</td>
+<td style="text-align: left;"> <strong>Review session</strong></td>
+<td style="text-align: left;"><span class="alert">Course evaluation, 11:59pm Dec 10</span></td>
+</tr>
+<tr class="week-start">
+<td style="text-align: left;">Finals &middot; Dec 11&ndash;17</td>
+<td style="text-align: left;"><strong>Final Exam</strong> &mdash; date and room set by the Registrar</td>
+<td style="text-align: left;"><span class="alert">Final Exam</span></td>
+</tr>
+</tbody>
+</table></div>
+
+<h1 id="university-policies-and-resources-for-students">APPENDIX</h1>
+<h2 class="unnumbered" id="university-policies">University Policies</h2>
+<h3 class="unnumbered" id="academic-integrity-code">Academic Integrity
+Code</h3>
+<p>Academic integrity is an essential part of the educational process,
+and all members of the GW community take these matters very seriously.
+As the instructor of record for this course, my role is to provide clear
+expectations and uphold them in all assessments. Violations of academic
+integrity occur when students fail to cite research sources properly,
+engage in unauthorized collaboration, falsify data, and otherwise
+violate the Code of Academic Integrity. If you have any questions about
+whether or not particular academic practices or resources are permitted,
+you should ask me for clarification. If you are reported for an academic
+integrity violation, you should contact Conflict Education and Student
+Accountability (CESA), formerly known as Student Rights and
+Responsibilities (SRR), to learn more about your rights and options in
+the process. Consequences can range from failure of assignment to
+expulsion from the University and may include a transcript notation. For
+more information, refer to the CESA website at <a
+href="https://studentconduct.gwu.edu/academic-integrity"
+class="uri">https://studentconduct.gwu.edu/academic-integrity</a>, email
+<a href="mailto:cesa@gwu.edu">cesa@gwu.edu</a>, or call
+202-994-6757.</p>
+<h3 class="unnumbered"
+id="university-policy-on-observance-of-religious-holidays">University
+Policy on Observance of Religious Holidays</h3>
+<p>Students must notify faculty during the first week of the semester in
+which they are enrolled in the course, or as early as possible, but no
+later than three weeks prior to the absence, of their intention to be
+absent from class on their day(s) of religious observance. If the
+holiday falls within the first three weeks of class, the student must
+inform faculty in the first week of the semester. For details and
+policy, see “Religious Holidays” at <a
+href="https://provost.gwu.edu/policies-procedures-and-guidelines"
+class="uri">provost.gwu.edu/policies-procedures-and-guidelines</a>.</p>
+<h3 class="unnumbered"
+id="use-of-electronic-course-materials-and-class-recordings">Use of
+Electronic Course Materials and Class Recordings</h3>
+<p>Students are encouraged to use electronic course materials for private personal use in connection with their academic program of study. While the instructor will not record classes, students may use their own electronic devices to record. Electronic  course materials and recorded class sessions should not be shared or used for non-course
+related purposes unless express permission has been granted by the
+instructor. Students who impermissibly share any electronic course
+materials are subject to discipline under the Student Code of Conduct.
+Please contact the instructor if you have questions regarding what
+constitutes permissible or impermissible use of electronic course
+materials and/or recorded class sessions. Please contact Disability
+Support Services at <a href="https://disabilitysupport.gwu.edu"
+class="uri">disabilitysupport.gwu.edu</a> if you have questions or need
+assistance in accessing electronic course materials.</p>
+<h2 class="unnumbered" id="academic-support">Academic Support</h2>
+<h3 class="unnumbered" id="writing-center">Writing Center</h3>
+<p>GW’s Writing Center cultivates confident writers in the University
+community by facilitating collaborative, critical, and inclusive
+conversations at all stages of the writing process. Working alongside
+peer mentors, writers develop strategies to write independently in
+academic and public settings. Appointments can be booked online at <a
+href="https://gwu.mywconline" class="uri">gwu.mywconline</a>.</p>
+<h3 class="unnumbered" id="academic-commons">Academic Commons</h3>
+<p><a href="https://academiccommons.gwu.edu">Academic Commons</a> is the central
+location for academic support resources for GW students. To schedule a
+peer tutoring session for a variety of courses visit
+go.gwu.edu/tutoring. Visit <a href="https://academiccommons.gwu.edu"
+class="uri">academiccommons.gwu.edu</a> for study skills tips, finding
+help with research, and connecting with other campus resources. For
+questions email <a
+href="mailto:academiccommons@gwu.edu">academiccommons@gwu.edu</a>.</p>
+<h2 class="unnumbered"
+id="support-for-students-outside-the-classroom">Support for Students
+Outside the Classroom</h2>
+<h3 class="unnumbered"
+id="disability-support-services-dss-202-994-8250">Disability Support
+Services (DSS): 202-994-8250</h3>
+<p>Any student who may need an accommodation based on the potential
+impact of a disability should contact Disability Support Services at <a
+href="https://disabilitysupport.gwu.edu"
+class="uri">disabilitysupport.gwu.edu</a> to establish eligibility and
+to coordinate reasonable accommodations.</p>
+<h3 class="unnumbered"
+id="student-health-center-202-994-5300-247">Student Health Center:
+202-994-5300, 24/7</h3>
+<p>The Student Health Center (SHC) offers <a
+href="https://healthcenter.gwu.edu/medical-services">medical</a>, <a
+href="https://healthcenter.gwu.edu/counseling-and-psychological-services">counseling/psychological</a>,
+and <a
+href="https://healthcenter.gwu.edu/psychiatric-services">psychiatric</a>
+services to GW students. More information about the SHC is available at
+<a href="https://healthcenter.gwu.edu" class="uri">healthcenter.gwu.edu</a>.
+Students experiencing a medical or mental health emergency on campus
+should contact GW Emergency Services at 202-994-6111, or off campus at
+911.</p>
+<h2 class="unnumbered" id="gw-campus-emergency-information">GW Campus
+Emergency Information</h2>
+<p>GW Emergency Services: 202-994-6111 For situation-specific
+instructions, refer to <a
+href="https://safety.gwu.edu/emergency-response-handbook">GW’s Emergency
+Procedures guide</a>.</p>
+<h3 class="unnumbered" id="gw-alert">GW Alert</h3>
+<p>GW Alert is an emergency notification system that sends alerts to the
+GW community. GW requests students, faculty, and staff maintain current
+contact information by logging on to <a href="https://alert.gwu.edu"
+class="uri">alert.gwu.edu</a>. Alerts are sent via email, text, social
+media, and other means, including the Guardian app. The Guardian app is
+a safety app that allows you to communicate quickly with GW Emergency
+Services, 911, and other resources. Learn more at <a
+href="https://safety.gwu.edu" class="uri">safety.gwu.edu</a>.</p>
+<h3 class="unnumbered"
+id="classroom-emergency-lockdown-buttons">Classroom emergency lockdown
+buttons</h3>
+<p>All classrooms have been equipped with classroom emergency lockdown
+buttons. If the button is pushed, GWorld Card access to the room will be
+disabled, and GW Dispatch will be alerted. The door must be manually
+closed if it is not closed when the button is pushed. Anyone in the
+classroom will be able to exit, but no one will be able to get in.</p>
+<h3 class="unnumbered" id="protective-actions">Protective Actions</h3>
+<p>GW prescribes four protective actions that can be issued by
+university officials depending on the type of emergency. All GW
+community members are expected to follow directions according to the
+specified protective action. The protective actions are Shelter,
+Evacuate, Secure, and Lockdown (details below). Learn more at <a
+href="https://safety.gwu.edu/gw-standard-emergency-statuses"
+class="uri">safety.gwu.edu/gw-standard-emergency-statuses</a>.</p>
+<ol>
+<li><p>Shelter</p>
+<ul>
+<li><p>Protection from a specific hazard</p></li>
+<li><p>The hazard could be a tornado, earthquake, hazardous material
+spill, or other environmental emergency.</p></li>
+<li><p>Specific safety guidance will be shared on a case-by-case
+basis.</p></li>
+<li><p><span><strong>Action:</strong></span></p>
+<ul>
+<li><p>Follow safety guidance for the hazard.</p></li>
+</ul></li>
+</ul></li>
+<li><p>Evacuate</p>
+<ul>
+<li><p>Need to move people from one location to another.</p></li>
+<li><p>Students and staff should be prepared to follow specific
+instructions given by first responders and University
+officials.</p></li>
+<li><p><span><strong>Action:</strong></span></p>
+<ul>
+<li><p>Evacuate to a designated location.</p></li>
+<li><p>Leave belongings behind.</p></li>
+<li><p>Follow additional instructions from first responders.</p></li>
+</ul></li>
+</ul></li>
+<li><p>Secure</p>
+<ul>
+<li><p>Threat or hazard outside of buildings or around campus.</p></li>
+<li><p>Increased security, secured building perimeter, increased
+situational awareness, and restricted access to entry doors.</p></li>
+<li><p><span><strong>Action:</strong></span></p>
+<ul>
+<li><p>Go inside and stay inside.</p></li>
+<li><p>Activities inside may continue.</p></li>
+</ul></li>
+</ul></li>
+<li><p>Lockdown</p>
+<ul>
+<li><p>Threat or hazard with the potential to impact individuals inside
+buildings.</p></li>
+<li><p>Room-based protocol that requires locking interior doors, turning
+off lights, and staying out of sight of corridor window.</p></li>
+<li><p><span><strong>Action:</strong></span></p>
+<ul>
+<li><p>Locks, lights, out of sight</p></li>
+<li><p>Consider Run, Hide, Fight</p></li>
+</ul></li>
+</ul></li>
+</ol>
+<h1 id="sec_student_survey">Student Survey (graded)</h1>
+<p>Participation marks are awarded for completing this form. To receive
+credit you must:</p>
+<ol>
+<li><p>Read the syllabus and raise any questions or concerns you may have with the Professor. </p></li>
+<li><p>Complete the google form at: <a
+href="https://forms.gle/9Yf6kcV1YfVvxsz76">forms.gle/9Yf6kcV1YfVvxsz76</a></p></li>
+</ol>
+<script>
+// Build the table of contents from the <h1> section headings themselves, so
+// each title is written in exactly one place.
+document.addEventListener("DOMContentLoaded", function () {
+  var list = document.querySelector("nav#TOC > ul");
+  if (!list) return;
+  var n = 0;
+  document.querySelectorAll("body h1:not(.title)").forEach(function (h) {
+    if (!h.id) h.id = "section-" + (++n);
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.href = "#" + h.id;
+    a.textContent = h.textContent.trim();
+    li.appendChild(a);
+    list.appendChild(li);
+  });
+  if (!list.children.length) document.getElementById("TOC").remove();
+});
+</script>
+<script>
+// Theme toggle. Cycles auto -> light -> dark; "auto" follows the OS setting.
+// The button is hidden by default so readers without JS never see a dead
+// control -- it is revealed here once it works.
+(function () {
+  var KEY = "econ2151-theme";
+  var ORDER = ["auto", "light", "dark"];
+  var FACE = {
+    auto:  { icon: "\u25D0", label: "Auto",  hint: "Theme: follows your device. Click for light." },
+    light: { icon: "\u2600", label: "Light", hint: "Theme: light. Click for dark." },
+    dark:  { icon: "\u263E", label: "Dark",  hint: "Theme: dark. Click to follow your device." }
+  };
+  var btn = document.getElementById("theme-toggle");
+  if (!btn) return;
+  var icon = btn.querySelector(".icon");
+  var label = btn.querySelector(".label");
+
+  function read() {
+    try {
+      var v = localStorage.getItem(KEY);
+      return v === "light" || v === "dark" ? v : "auto";
+    } catch (e) { return "auto"; }
+  }
+
+  function apply(mode) {
+    if (mode === "auto") {
+      document.documentElement.removeAttribute("data-theme");
+    } else {
+      document.documentElement.setAttribute("data-theme", mode);
+    }
+    try {
+      if (mode === "auto") localStorage.removeItem(KEY);
+      else localStorage.setItem(KEY, mode);
+    } catch (e) { /* private browsing: the choice just will not persist */ }
+    var face = FACE[mode];
+    icon.textContent = face.icon;
+    label.textContent = face.label;
+    btn.title = face.hint;
+    btn.setAttribute("aria-label", face.hint);
+  }
+
+  apply(read());
+  btn.hidden = false;
+  btn.addEventListener("click", function () {
+    apply(ORDER[(ORDER.indexOf(read()) + 1) % ORDER.length]);
+  });
+})();
+</script>
+</body>
+</html>
