@@ -394,6 +394,26 @@ main ul:not(.pub-list):not(.event-list):not(.author__urls) li {
   background: #0a1f4a;
 }
 
+/* Generic pill button (same subtle look as the PDF / DOI links) */
+
+.pill-btn {
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: var(--gw-blue);
+  border: 1px solid var(--gw-buff);
+  border-radius: 999px;
+  padding: 0.1rem 0.5rem;
+  background: #fff;
+  vertical-align: middle;
+  transition: background 0.15s;
+}
+
+.pill-btn:hover {
+  background: var(--gw-buff-light);
+  text-decoration: none;
+}
+
 .research-interests__fields {
   font-size: 1.2rem;
   font-weight: 700;
