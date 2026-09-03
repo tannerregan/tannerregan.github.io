@@ -111,6 +111,14 @@
     td:first-child{ white-space:nowrap; color:var(--muted); }
     tr.week-start td:first-child{ color:var(--gw-blue); font-weight:700; }
 
+    /* grading scale */
+    .grade-scale{ display:grid; grid-template-columns:3rem auto;
+                  max-width:16rem; margin:1rem 0 1.5rem;
+                  font-variant-numeric:lining-nums tabular-nums; }
+    .grade-scale span{ padding:.3rem 0; border-bottom:1px solid var(--rule); }
+    .grade-scale b{ padding:.3rem 0; border-bottom:1px solid var(--rule);
+                    color:var(--gw-navy); }
+
     /* signature block */
     .sigline{ display:flex; align-items:baseline; gap:.75rem;
               margin:2.5rem 0; font-size:1.15rem; }
@@ -170,8 +178,8 @@
 <h1 id="course-details">Course details</h1>
 <h2 id="contact-information">Contact information</h2>
 <p><u>Instructor:</u> Prof. Tanner Regan<br />
-<u>Class location (section 11):</u> TR 9:35-10:50am in Funger Hall 210 <br />
-<u>Class location (section 10):</u> TR 2:20-3:35pm in Rome Hall 459 <br />
+<u>Class location (section 11):</u> Funger Hall 210 <br />
+<u>Class location (section 10):</u> Rome Hall 459 <br />
 <u>E-mail:</u> tanner_regan@gwu.edu<br />
 <u>Campus Address:</u> Monroe Hall, Room 310<br />
 <u>Contact Protocol</u>: *Email* with subject line “ECON2151 -
@@ -297,6 +305,22 @@ is examinable material.</p></li>
 semester.</p></li>
 </ul></li>
 </ul>
+
+<h2 id="grading-scale">Grading scale</h2>
+<div class="grade-scale">
+<b>A</b><span>93 – 100%</span>
+<b>A-</b><span>90 – 92%</span>
+<b>B+</b><span>87 – 89%</span>
+<b>B</b><span>83 – 86%</span>
+<b>B-</b><span>80 – 82%</span>
+<b>C+</b><span>77 – 79%</span>
+<b>C</b><span>73 – 76%</span>
+<b>C-</b><span>70 – 72%</span>
+<b>D+</b><span>67 – 69%</span>
+<b>D</b><span>63 – 66%</span>
+<b>D-</b><span>60 – 62%</span>
+<b>F</b><span>Below 60%</span>
+</div>
 
 <h2 id="grading-policies">Grading policies</h2>
 <p><u>DSS accomodation</u>: Any student who may need an accommodation
