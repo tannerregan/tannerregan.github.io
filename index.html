@@ -81,7 +81,7 @@
 
       <h2>Featured Research <a href="research.html" class="section-link">See all research &rarr;</a></h2>
       <div class="project-grid">
-        <a class="project-card" href="papers/Henderson_etal_unp2025.pdf" target="_blank" rel="noopener">
+        <a class="project-card" data-paper="greenfield" href="papers/Henderson_etal_unp2026.pdf" target="_blank" rel="noopener">
           <div class="project-card__image project-card__image--split">
             <img class="split-img split-img--tl" src="assets/images/example_20k_boundary_tuangoma2001.png" alt="Tuangoma 2001">
             <img class="split-img split-img--br" src="assets/images/example_20k_boundary_tuangoma2021.png" alt="Tuangoma 2021">
@@ -92,11 +92,11 @@
             <span class="split-label split-label--br">May 2021</span>
           </div>
           <div class="project-card__body">
-            <h3>Economics of Greenfield Urban Planning</h3>
+            <h3>Greenfield Urban Planning</h3>
             <p class="project-blurb">In Dar es Salaam, there is over supply of large lots in new greenfield developments. Reallocating land towards smaller lots would improve formal land access for more and poorer households and raise aggregate welfare. </p>
           </div>
         </a>
-        <a class="project-card" href="papers/Manwaring_Regan_unp2026.pdf" target="_blank" rel="noopener">
+        <a class="project-card" data-paper="no-shame" href="papers/Manwaring_Regan_unp2026.pdf" target="_blank" rel="noopener">
           <div class="project-card__image">
             <img src="assets/images/NoShameAIdrawing.png" alt="No Shame in My Name" style="width:100%;height:100%;object-fit:cover;">
           </div>
@@ -114,5 +114,44 @@
   <footer class="page__footer">
     &copy; Tanner Regan
   </footer>
+
+  <!-- Keep the featured-research PDF links in sync with research.html.
+       Each card carries data-paper="KEY"; the matching entry in research.html
+       carries the same key on its <li>. On load we fetch research.html and copy
+       that entry's first PDF link onto the card, so updating a paper only
+       requires editing research.html. The hardcoded href is the fallback if
+       the fetch fails or the key is missing. -->
+  <script>
+    (function () {
+      var cards = document.querySelectorAll('.project-card[data-paper]');
+      if (!cards.length) return;
+
+      fetch('research.html')
+        .then(function (res) {
+          if (!res.ok) throw new Error('research.html: ' + res.status);
+          return res.text();
+        })
+        .then(function (html) {
+          var doc = new DOMParser().parseFromString(html, 'text/html');
+          cards.forEach(function (card) {
+            var key = card.getAttribute('data-paper');
+            var entry = doc.querySelector('[data-paper="' + key + '"]');
+            if (!entry) {
+              console.warn('No research.html entry for data-paper="' + key + '"');
+              return;
+            }
+            var link = entry.querySelector('.pub-links a[href$=".pdf"]');
+            if (!link) {
+              console.warn('No PDF link in research.html entry "' + key + '"');
+              return;
+            }
+            card.setAttribute('href', link.getAttribute('href'));
+          });
+        })
+        .catch(function (err) {
+          console.warn('Featured-research link sync skipped:', err);
+        });
+    })();
+  </script>
 </body>
 </html>
