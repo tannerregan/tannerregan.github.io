@@ -6,7 +6,7 @@ plus `assets/`.
 
 ## Site structure
 
-- **Masthead** (`masthead` / `masthead__inner-wrap`): top bar with site title and nav links. Nav contains: Home, Research, Policy, Events, Teaching. There is no CV link in the nav — the CV is accessed via the Download CV button on the home page.
+- **Masthead** (`masthead` / `masthead__inner-wrap`): top bar with site title and nav links. Nav contains: Home, CV, Research, Policy, Events, Teaching. The CV nav link points to `CV/Tanner_Regan_CV.pdf` and opens in a new tab; the CV is also reachable via the Download CV button on the home page.
 - **Sidebar** (`aside.sidebar`): shown on all pages; contains profile photo, name, bio, email, social icons (Google Scholar, X, LinkedIn, Bluesky, RePEc).
 - **`index.html` only**: a `research-interests` box appears at the top of `main.page__content`, containing the field label, topic keywords, and a "Download CV" pill button (`a.cv-download-btn`) that links to `CV/Tanner_Regan_CV.pdf` and opens in a new tab.
 - **Stylesheet**: `assets/css/style.css`. Uses GW brand colors defined as CSS variables: `--gw-navy: #00223e`, `--gw-blue: #033c5a`, `--gw-buff: #d6bf91`, `--gw-buff-light: #f6f1e8`.
