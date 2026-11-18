@@ -1,0 +1,314 @@
+<title>ECON 2151 Fieldwork Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Source+Code+Pro:wght@400;500&display=swap">
+<style>
+:root {
+  --ground: #f5f6f3; --panel: #ffffff; --ink: #17222c; --muted: #58636e; --line: #d8ddd9;
+  --accent: #0b4a6e; --accent-ink: #ffffff; --buff: #9a8350; --soft: #e9eef1;
+  --warn: #9b2c22; --warn-soft: #f8e9e6; --script: #f3efe4;
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans: "Source Sans 3", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --mono: "Source Code Pro", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --ground: #11171c; --panel: #192229; --ink: #e5eaee; --muted: #a2adb7; --line: #2d3943;
+    --accent: #7fb6d9; --accent-ink: #0d1a22; --buff: #cdb77f; --soft: #1f2b34;
+    --warn: #f0a097; --warn-soft: #3a2220; --script: #2a2821;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --ground: #11171c; --panel: #192229; --ink: #e5eaee; --muted: #a2adb7; --line: #2d3943;
+  --accent: #7fb6d9; --accent-ink: #0d1a22; --buff: #cdb77f; --soft: #1f2b34;
+  --warn: #f0a097; --warn-soft: #3a2220; --script: #2a2821;
+}
+body { background: var(--ground); color: var(--ink); font: 17px/1.55 var(--sans); }
+.wrap { max-width: 760px; margin: 0 auto; padding-inline: 16px; padding-block: 8px 64px; }
+header.top { padding-block: 28px 12px; }
+.eyebrow { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--buff); font-weight: 700; }
+h1 { font: 700 clamp(30px, 6vw, 42px)/1.1 var(--serif); margin: 6px 0 10px; text-wrap: balance; }
+h2 { font: 700 26px/1.2 var(--serif); margin: 0 0 12px; text-wrap: balance; }
+h3 { font: 700 18px/1.3 var(--sans); margin: 0 0 6px; }
+p { margin: 0 0 12px; max-width: 65ch; }
+a { color: var(--accent); }
+a:focus-visible, .btn:focus-visible { outline: 3px solid var(--buff); outline-offset: 2px; }
+code { font: 14px var(--mono); overflow-wrap: anywhere; }
+nav.toc { background: var(--ground); border-bottom: 1px solid var(--line);
+          display: flex; flex-wrap: wrap; gap: 6px; padding-block: 10px; }
+/* pinned only where the wrapped menu is short enough not to crowd the page */
+@media (min-width: 700px) {
+  nav.toc { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; }
+}
+nav.toc a { flex: none; font-size: 14px; font-weight: 600; text-decoration: none; color: var(--ink);
+            background: var(--panel); border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; }
+section { padding-block: 28px 8px; border-bottom: 1px solid var(--line); scroll-margin-top: 64px; }
+section > * + * { margin-top: 12px; }
+ul, ol { padding-left: 1.3em; margin: 0 0 12px; }
+li + li { margin-top: 4px; }
+.lead { font-size: 19px; }
+.tablewrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 15px; background: var(--panel); }
+th, td { text-align: left; vertical-align: top; padding: 8px 10px; border-bottom: 1px solid var(--line); }
+th { font-size: 13px; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
+td.num, th.num { font-variant-numeric: tabular-nums; white-space: nowrap; font-weight: 700; }
+td.pts { text-align: right; font-variant-numeric: tabular-nums; font-weight: 700; }
+tr.total td { border-top: 2px solid var(--ink); font-weight: 700; }
+.deadline { color: var(--warn); font-weight: 700; }
+.cards { display: grid; gap: 12px; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 14px; }
+.form { display: flex; gap: 14px; align-items: flex-start; }
+.form > div { min-width: 0; }
+.form img { width: 120px; height: 120px; flex: none; border-radius: 6px; background: #fff; padding: 4px; }
+.form p { font-size: 15px; color: var(--muted); margin-bottom: 8px; }
+.form code { display: block; margin-top: 8px; font-size: 12px; color: var(--muted); }
+.btn { display: inline-block; background: var(--accent); color: var(--accent-ink); font-weight: 700;
+        text-decoration: none; border-radius: 8px; padding: 8px 14px; }
+.two { display: grid; gap: 12px; }
+@media (min-width: 640px) { .two { grid-template-columns: 1fr 1fr; } }
+.label { font-size: 13px; letter-spacing: .06em; text-transform: uppercase; font-weight: 700; color: var(--buff); }
+.callout { background: var(--warn-soft); border-left: 4px solid var(--warn); padding: 12px 14px; border-radius: 0 8px 8px 0; }
+.script { background: var(--script); padding: 14px 16px; border-radius: 8px; font: 19px/1.5 var(--serif); }
+.script .label { display: block; font-family: var(--sans); margin-bottom: 4px; }
+figure { margin: 0; }
+figure img { max-width: 100%; border-radius: 8px; border: 1px solid var(--line); }
+figcaption { font-size: 13px; color: var(--muted); margin-top: 4px; }
+ol.qs { padding-left: 1.6em; }
+ol.qs li { padding-block: 8px; border-bottom: 1px dashed var(--line); margin: 0; }
+ol.qs li.grp { list-style: none; margin-left: -1.6em; border-bottom: none; padding-top: 18px;
+               font: 700 17px var(--serif); }
+ol.qs li.note { color: var(--muted); }
+.kind { display: inline-block; font-size: 11px; letter-spacing: .06em; text-transform: uppercase;
+         font-weight: 700; color: var(--buff); margin-right: 6px; }
+.cond { font-size: 13px; color: var(--muted); font-style: italic; }
+.opts { font-size: 14px; color: var(--muted); margin-top: 2px; }
+details { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; }
+details + details { margin-top: 8px; }
+summary { font-weight: 700; cursor: pointer; }
+details[open] summary { margin-bottom: 8px; }
+dl.steps { display: grid; grid-template-columns: auto 1fr; gap: 6px 12px; margin: 0; }
+dl.steps dt { font-weight: 700; font-variant-numeric: tabular-nums; }
+dl.steps dd { margin: 0; }
+footer { padding-block: 24px; font-size: 13px; color: var(--muted); }
+@media (max-width: 420px) { .form { flex-direction: column; } }
+</style>
+
+<div class="wrap">
+<header class="top">
+  <div class="eyebrow">ECON 2151 · Economic Development · Fall 2026</div>
+  <h1>Fieldwork on the National Mall</h1>
+  <p class="lead">Setup, what to do at each site, both surveys, grading, and fixes for common problems.</p>
+</header>
+<nav class="toc" aria-label="Sections"><a href="#glance">At a glance</a><a href="#links">Links</a><a href="#setup">Phone setup</a><a href="#pilot">Practice & pilot</a><a href="#sites">Your sites</a><a href="#protocol">At each site</a><a href="#ethics">Ethics</a><a href="#grading">Grading</a><a href="#help">Troubleshooting</a><a href="#contact">Contact</a><a href="#appendix">Transcripts</a></nav>
+
+<section id="glance">
+  <h2>At a glance</h2>
+  <p>You are randomly assigned 5 sites on and around the National Mall. At each one you complete two short surveys on your phone:</p>
+  <ul>
+    <li><strong>Survey A: Interview.</strong> Interview one adult passer-by (about 5 minutes).</li>
+    <li><strong>Survey B: Water.</strong> Walk to the nearest place selling bottled water and record its type, a photo, the price of a bottle and its location (about 5 minutes). You do not need to buy anything.</li>
+  </ul>
+  <p>In total: 5 completed interviews and 5 water surveys. The project is worth 15% of your grade.</p>
+  <div class="tablewrap"><table>
+    <tr><th>When</th><th>What</th></tr>
+    <tr><td class="num">Oct 1</td><td>Set up your phone and practice both surveys with your neighbor in class (not graded)</td></tr>
+    <tr><td class="num">Oct 16, 11:59pm</td><td><span class="deadline">Pilot deadline:</span> both pilot surveys at your assigned GW campus site</td></tr>
+    <tr><td class="num">From Oct 1</td><td>Fieldwork open: visit your 5 sites whenever suits you</td></tr>
+    <tr><td class="num">Nov 27, 11:59pm</td><td><span class="deadline">Final deadline:</span> all 5 interviews and 5 water surveys. Late submissions are not accepted (see syllabus)</td></tr>
+    <tr><td class="num">December</td><td>We look at the class results together</td></tr>
+  </table></div>
+  <p>Nov 27 is Thanksgiving week. Plan to finish well before you travel.</p>
+</section>
+
+<section id="links">
+  <h2>Links</h2>
+  <p>Open these in Safari (iPhone) or Chrome (Android). On a laptop, scan the QR code with your phone camera.</p>
+  <div class="label">Practice &amp; pilot (classroom and GW campus)</div>
+  <div class="cards">
+    <div class="card form">
+  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWgAAAFoAQAAAABSnlx4AAACcElEQVR42u2bO5KjQBBEX4IiJA9uwNxEuhnoWOtpDrIRww3AGyIEuUY30ijWWlO91Zag08pSVWV9kPmHUxHoQAf6vdHY98fv8zdQ297ovf11aweDhaF7206mprtzVe0B+Xa0Pl5ug8HS0LOkFjjan5InS6o4z/LXj9tgsCT04eVpOdEZMMytzr9Q9zsYfE9bHq3xcGduAW0smDUYLBnd2J6yhFs0NBu9V+mEPl5ug8HC0FdJUgWLGI9WC8y1b0e/3AaDhUX7+tmeWRCoHytoVoEMDgZLRa8aZmmYJTWmsweAuYKjYdWANczSJRgsrDeTTN1P8u1of9UeGtuT7O+Mke0tejPFWf5OPylpuJTYe2+5IZMeJ3lAdli+MHRtdRvXzr4BnZ3lHIC/6hQRvEa0L9XnUzxPnfiUAM7OZ0uVXfh8mT7fyrdFdPek7poNFiWFJ4fCK1Pbe4J+lHQCVqlLrz5PCTNXweD7xO89QqdJ6sBDpAG5KxearcQ6zRP00/PdzzqtflRxYfkSLZ+c/LYX7E8J1+3z87B8iZl7SP8BXYDxAM3Gda/VVkm1hya2JwpDp078bIG2bOo98H8Kjwf6IRgsNdpnj4bcj83RPjfpHqk/on15eX4/39A9xuuPPP98DAYLy/P7ueTE3maf33szeUITDBaW58mZ3BWkhapmIk/bRW3mpP/Ot2CwOPRzP1Y6ANaApROMklpZaUITDJaKXtIqNHBVbc9Kgs/yZF2CwfdC62x7rOgnS433LcnYci8UvW/AphUptbLa1I/t7jBLHuuI38XVaa9fs3WPgcu+TLF3bKNCLwqt+HY50IH+r9B/AF7yzo+af2YgAAAAAElFTkSuQmCC" alt="QR code for Practice &amp;amp; Pilot: Survey A, Interview" width="120" height="120">
+  <div><h3>Practice &amp; Pilot: Survey A, Interview</h3><p>Choose P0 in class, or your pilot site on campus.</p>
+  <a class="btn" href="https://ee.kobotoolbox.org/x/dlWU4az7" target="_blank" rel="noopener">Open form</a>
+  <code>https://ee.kobotoolbox.org/x/dlWU4az7</code></div></div>
+    <div class="card form">
+  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWgAAAFoAQAAAABSnlx4AAACY0lEQVR42u1bS67aQBCswk/y2xlO4Eg5iNm9Y3m4QY4EN7FPkPEOS3gqi7b5vF12odMjIQFdYlFD/6rbFP7i7BDoQAf6vdGQbvf33RUA0KugzwBqoX2ySsGgM3QvSSpALQ2V0mS/0U18sQaD/tATyf3jy6bYq5aGF2sw6BU9k93MBIqsdCL5Ixh8G/TH90SOBadfv3eAiPoKLMGgZ3QjKT99SynfM/eTNRj0W61rqJSagj5T56jWfaMrbecMsJupsRLbhceZ36zBoDOf7yWlpjxCwBrtdZfsepXweY/Rvil23RJaKQHoM83TI9q71mbGHXotJKnLB9BI94a9kjJDm3Hs870kXZ9CgBV82kJA+LzfaA90kobKWrimmDC/VngW/INBp3n+XMvKOSnZx8jzzvN8BnotPAIaKpFkWu3jKvI1kef/efQHUAnTQZgOunyB7Q0AC6Y9UYOobpgOBTZiCwZdxW+tMtzakldK4DZYjcztGb1QmeKeOn2aVJNFcmf/i5lpIhPEYzDozuef5i+mxEupkSnx5vKpCVXO583TQvzWmJW7eb15RYfuMtqzLQBEfgLtTHK3Se8YSZJMUa379Pnt2Nx1k+K6q/n8qseGzzv0+fUcAXY3nJ46dCxMUOzKedVmHvuxGElL++tZm7wcDLpEbxuwtlzBPYCm4PIJjCT3Ypqq2LXwhX7dqaxFLOzznsAOqK8Yf962qN+dg8E3uksA7QBMAJqMy5G2K3ev1YJBb+jHBqwG4NRKyuKxltVsNncJBv2hT6QJsLM9xDRatb7O0E2aZWRuX2jGs8uBDvR/hf4D3DLPyHpPuOQAAAAASUVORK5CYII=" alt="QR code for Practice &amp;amp; Pilot: Survey B, Water" width="120" height="120">
+  <div><h3>Practice &amp; Pilot: Survey B, Water</h3><p>Choose P0 in class, or your pilot site on campus.</p>
+  <a class="btn" href="https://ee.kobotoolbox.org/x/ghabhUgI" target="_blank" rel="noopener">Open form</a>
+  <code>https://ee.kobotoolbox.org/x/ghabhUgI</code></div></div>
+  </div>
+  <div class="label">Fieldwork (your 5 sites)</div>
+  <div class="cards">
+    <div class="card form">
+  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWgAAAFoAQAAAABSnlx4AAACUklEQVR42u1bQZKbQAzsBlexN8gL2Ko8xP7SvoDhB3mS9yfwgsANV5npHGbAUJVLjlY0J2P1SRpJTUtQ+IdTwNGOdvR7oyE999/XBUApTUA3AaiE9mCV3IPG0J0kKQKVNKxkA6COuM48Wd2D9tAzU7gBtE90iugbpItwsroHraIfJC8AqDCX6kl+ugffBn35y3/9r98FIKJagNU9aBldS5oShRtKaaI0YevcB6t70C5b11Aq1BHdRN2drduO/OEs6THnPAC0J7t70FjOd5JCHXe2vlV77ZJdp+g5bw5diiSVyrsGABDZUPdXL+hZuActajNTCvftsVO6sAEy4XNtxijD47GbhzomVS61/ZDvhld7g5HPSX6Vjkr8JsxvpM8jb1TJYfz+WICVqAXMjN+1gJWb+Xp3D5rs8/XK2yNV/fElzI/5atTe598ki+cGQCkAGD/RfTFibogKRPnE/CNidrZutXMrteqTNlPJO7d9th6wv5Kncp5G6vnR2brFyOdzpuehVlLiX69uHnmDkZ/ydsySi39EpyzPHu6FR94YeiVbiSRvAHkB5gKYC1wljCRJBmfrdqt9yvm0MfUq/q12PdZz3mDO53MDtpEM21TtsTJAvitnlNtvG7D7oJWJ0nnOm0dvG7Bp+paGccD3BzCSbMQwl7q7By2hzzuVldgO6NuVQAFUC8afz63quxL/duiVAUxv6A/y+gQg0rcnbKJfG7AYL+jGAt0k3iqli7CXdPegMXRPpqx+UEMpthF56JLIewEktdY9aAdN/3bZ0Y7+r9B/AO6l5qRkE+fRAAAAAElFTkSuQmCC" alt="QR code for Survey A: Interview" width="120" height="120">
+  <div><h3>Survey A: Interview</h3><p>Use this at each of your 5 assigned sites. Do it first.</p>
+  <a class="btn" href="https://ee.kobotoolbox.org/x/7mW2TsdA" target="_blank" rel="noopener">Open form</a>
+  <code>https://ee.kobotoolbox.org/x/7mW2TsdA</code></div></div>
+    <div class="card form">
+  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWgAAAFoAQAAAABSnlx4AAACQElEQVR42u1bMZLbMAzcjW5G11E/0P1E9zMyP3Mekhn7BaE6ecbmpgAl+65LaQSsJHGrhQAsVhSFf1g/EOhAB/q10ZBux/Ui6QzkCmQ1AMD8ZTcYdBb5LElqFvlBqgCSdBr1bTcY9IZeSU79yZ2cG3IVP/uTx24w6BfNRSrroALqBPAjOHlpdNadZSU/AZ2DE9foJGvXVwJ3cqI49dun3WDQr1rfoPOgkhpypU6jQq17jvy3dQNAldTntC97waAr9J0FssZ+JT+sz6tS2qBfb/g5BYN+qz1VQEkCBqlSUgNGmeBryDGhu+7zAIBBBebM7Ss1wN6LYNAZOqsdNtzZKv1eAuYb8sVehmDQocKrlKppe92A1JArsOhR7Wtoe4+RL0mW5Js5OdXCvWwAhtD2rnPewr1sT7c8hrw+4EXOv4pa15MZk3RM6HtS19BsXrMYz6G2Ro5RR/2OyPtE9859slBzEgu6Pdudm3TnZzDoDG2f2lTFvFK6sqT2KAGDyEFl/REMeqz2anY6xuT5c+R3Jz7mNJcKL8sk3aKvjX3rGKqkmNN85nxfmx2u2L+79pyvVIk5zelUh30Gt2qv5yHPpH5oe6/VXrsNt5+K7k68juOyEXlX6DcAwDoB6Q8wivMZAIV1IsYNFwJgw0osp2DQXeT3dX0/Qp0EXIn59xsgAmzB4EuhzZspMG8GAC5jr9/hzbhEP07AYr5SkjiJfMduzOsy6BQM+lXrNqfl3ZwfhVn9GE2odWdoxr/LgQ70f4X+C2AbJj6pMMNsAAAAAElFTkSuQmCC" alt="QR code for Survey B: Water" width="120" height="120">
+  <div><h3>Survey B: Water</h3><p>Use this at each of your 5 assigned sites, after the interview.</p>
+  <a class="btn" href="https://ee.kobotoolbox.org/x/1eepg5MO" target="_blank" rel="noopener">Open form</a>
+  <code>https://ee.kobotoolbox.org/x/1eepg5MO</code></div></div>
+  </div>
+  <p><a href="https://claude.ai/artifact/2fZyKfu7JkKiM8FsRipUu8" target="_blank" rel="noopener"><strong>Interactive map of all sites</strong></a>: zoom in, and tap a pin for the meeting point and walking directions.</p>
+</section>
+
+<section id="setup">
+  <h2>Set up your phone</h2>
+  <p>The surveys run in your phone's web browser; there is no app to install. Do this once for each of the four forms.</p>
+  <div class="two">
+    <div class="card"><h3>iPhone (Safari)</h3>
+      <dl class="steps">
+        <dt>1</dt><dd>Open the form link in Safari (not Chrome or an in-app browser).</dd>
+        <dt>2</dt><dd>Tap the <strong>Share</strong> button (square with an arrow), then <strong>Add to Home Screen</strong> → Add.</dd>
+        <dt>3</dt><dd>Open the form from the new home-screen icon.</dd>
+        <dt>4</dt><dd>When asked, Allow location and camera access.</dd>
+        <dt>5</dt><dd>Type your GWID: the 8 digits after the G.</dd>
+      </dl></div>
+    <div class="card"><h3>Android (Chrome)</h3>
+      <dl class="steps">
+        <dt>1</dt><dd>Open the form link in Chrome.</dd>
+        <dt>2</dt><dd>Tap the <strong>⋮</strong> menu (top right), then <strong>Add to Home screen</strong> (or Install app) → Add.</dd>
+        <dt>3</dt><dd>Open the form from the new home-screen icon.</dd>
+        <dt>4</dt><dd>When asked, Allow location and camera access.</dd>
+        <dt>5</dt><dd>Type your GWID: the 8 digits after the G.</dd>
+      </dl></div>
+  </div>
+  <h3>Working without signal</h3>
+  <p>The forms work offline once they have been opened. If you submit without signal, the form keeps your submission on the phone and sends it the next time you open the form with a connection. Before you leave a site, check that the form shows no submissions still waiting to be sent. Don't clear your browser data while any are waiting.</p>
+  <h3>Moving through a form</h3>
+  <p>Each form shows one question per screen. Answer it, then tap Next. You can't move on until a required question is answered, and some questions only appear for certain answers. Tap Submit on the last screen.</p>
+</section>
+
+<section id="pilot">
+  <h2>Practice &amp; pilot</h2>
+  <p>The practice &amp; pilot forms list two sites for you:</p>
+  <ul>
+    <li><strong>P0. Our classroom:</strong> the practice. Not graded.</li>
+    <li><strong>Your pilot site</strong> (one of P1–P4): the pilot. Graded, 5 points per survey, due Oct 16, 11:59pm.</li>
+  </ul>
+  <p><strong>Practice (Oct 1, in class):</strong> choose P0, interview your neighbor, then swap. For the water survey, photograph anything.</p>
+  <p><strong>Pilot (by Oct 16):</strong> go to your pilot site and do both surveys for real. Interview an adult passer-by who is not in ECON 2151, then walk from the site to the nearest place selling bottled water. Your pilot site was drawn at random; type your GWID in a practice &amp; pilot form to see which one it is. For walking directions, use the <a href="https://claude.ai/artifact/2fZyKfu7JkKiM8FsRipUu8" target="_blank" rel="noopener">interactive map</a>.</p>
+  <div class="tablewrap"><table>
+    <tr><th class="num">Site</th><th>Name</th><th>Meeting point</th></tr><tr><td class="num">P1</td><td>Kogan Plaza</td><td>Center of the plaza, by the fountain</td></tr><tr><td class="num">P2</td><td>Western Market</td><td>Food hall entrance on I St, 2000 Pennsylvania Ave</td></tr><tr><td class="num">P3</td><td>Science and Engineering Hall</td><td>Main entrance on 22nd St NW</td></tr><tr><td class="num">P4</td><td>University Yard</td><td>Center of the yard, between G and H St</td></tr>
+  </table></div>
+</section>
+
+<section id="sites">
+  <h2>Your 5 sites</h2>
+  <p>You were randomly assigned 5 of these 20 sites. To see yours, open either fieldwork form and type your GWID: only your sites are listed. For walking directions, use the <a href="https://claude.ai/artifact/2fZyKfu7JkKiM8FsRipUu8" target="_blank" rel="noopener">interactive map</a>.</p>
+  <div class="tablewrap"><table>
+    <tr><th class="num">Site</th><th>Name</th><th>Meeting point</th></tr><tr><td class="num">1</td><td>Capitol Reflecting Pool</td><td>Grant Memorial, at the Capitol end of the pool</td></tr><tr><td class="num">2</td><td>Museum of the American Indian</td><td>Main entrance, Maryland Ave / Jefferson Dr side</td></tr><tr><td class="num">3</td><td>National Gallery (West Bldg)</td><td>Mall-side steps on Madison Dr</td></tr><tr><td class="num">4</td><td>Air and Space Museum</td><td>Mall-side entrance on Jefferson Dr</td></tr><tr><td class="num">5</td><td>Sculpture Garden</td><td>Madison Dr gate, opposite 7th St</td></tr><tr><td class="num">6</td><td>Hirshhorn Museum</td><td>Jefferson Dr side of the sculpture garden</td></tr><tr><td class="num">7</td><td>Natural History Museum</td><td>Mall entrance on Madison Dr</td></tr><tr><td class="num">8</td><td>Smithsonian Castle</td><td>North (Mall-side) entrance</td></tr><tr><td class="num">9</td><td>Smithsonian Metro</td><td>Top of the Mall exit escalators</td></tr><tr><td class="num">10</td><td>American History Museum</td><td>Mall entrance on Madison Dr</td></tr><tr><td class="num">11</td><td>African American History Museum</td><td>Main entrance facing the Monument</td></tr><tr><td class="num">12</td><td>Washington Monument</td><td>Ring of flags at the base</td></tr><tr><td class="num">13</td><td>Holocaust Museum</td><td>14th St entrance at Raoul Wallenberg Pl</td></tr><tr><td class="num">14</td><td>World War II Memorial</td><td>East entrance, 17th St</td></tr><tr><td class="num">15</td><td>Tidal Basin Paddle Boats</td><td>Paddle-boat dock, NE shore of the Tidal Basin</td></tr><tr><td class="num">16</td><td>MLK Memorial</td><td>Stone of Hope entrance on Independence Ave</td></tr><tr><td class="num">17</td><td>Vietnam Veterans Memorial</td><td>East end of the Wall</td></tr><tr><td class="num">18</td><td>Lincoln Memorial</td><td>Bottom of the front steps</td></tr><tr><td class="num">19</td><td>World Bank (MC Building)</td><td>Main entrance on H St NW, 1818 H St</td></tr><tr><td class="num">20</td><td>Elliott School (ESIA)</td><td>Main entrance on E St NW, 1957 E St</td></tr>
+  </table></div>
+</section>
+
+<section id="protocol">
+  <h2>At each site</h2>
+  <ol>
+    <li>Go to the meeting point of one of your assigned sites.</li>
+    <li><strong>Survey A, Interview:</strong> approach passers-by near the site.
+      <ul>
+        <li>Start a <strong>new interview form for every person you approach</strong>, even if they say no.</li>
+        <li>Read the script exactly as written (practice it before you go out):
+          <div class="script"><strong>Read aloud:</strong><br><br><em>"Hi, I'm a GW student doing a 3-minute anonymous survey for my economics class about Economic Development. Would you agree to participate? I won't ask your name or take your photo, you can stop the survey at any time, and your answers are only used for learning purposes in my class."</em></div></li>
+        <li>If they decline or are under 18, the form says so. Record their GPS and submit, then try the next person.</li>
+        <li><strong>Read exactly what the form shows.</strong> For a random half of respondents the form shows an extra line to read aloud about foreign aid; for the others it doesn't. Never give anyone the answers before the debrief at the end, and never suggest numbers.</li>
+        <li>Keep going until you have one completed interview. Refusals are recorded but don't count toward your 5.</li>
+        <li>The form ends with a GPS point. Take it while you are still at the site.</li>
+        <li><a class="open-tx" href="#transcript-a">Full survey transcript</a> (every question, in order)</li>
+      </ul></li>
+    <li><strong>Survey B, Water:</strong> open the water form.
+      <ul>
+        <li>From the meeting point, walk to the nearest place selling bottled water: a vending machine, food truck, kiosk, café or shop.</li>
+        <li>You do not need to buy anything. Find the bottle of plain water closest to 500 ml (16.9 oz). If only ml is shown on the label, divide by 29.57 to get ounces.</li>
+        <li>Complete the form. It ends with a GPS point, which you take at the water seller.</li>
+        <li><a class="open-tx" href="#transcript-b">Full survey transcript</a> (every question, in order)</li>
+      </ul></li>
+    <li>Make sure both surveys have been sent, then move on to your next site.</li>
+  </ol>
+  <p><strong>Check what has been received.</strong> In every form, the screen after you choose a site shows which of your surveys have reached me: the interview and water survey for that site, your totals for all 5 sites, and your pilot, with the time it was last updated. A new submission shows up within a few minutes; to see it, close the form and open it again with signal. To check without filling anything in, type your GWID, choose a site, read that screen, and close the form.</p>
+  <p><strong>Made a typo?</strong> Fill in the form again for the same site and answer “Yes” to the question about correcting a mistake. Only your latest submission for each site counts (the latest completed one, for interviews). No need to email me.</p>
+</section>
+
+<section id="ethics">
+  <h2>Ethics and safety</h2>
+  <ul>
+    <li><strong>Adults only</strong> (18+). No children, even with a parent's permission.</li>
+    <li><strong>Anonymous:</strong> never write down names, and never photograph respondents.</li>
+    <li><strong>Respect “no”:</strong> thank them and move on. Anyone can stop whenever they like.</li>
+    <li>Don't interview classmates from ECON 2151.</li>
+    <li><strong>Safety:</strong> go in daylight. You may go with a classmate, but each of you does your own interviews, and never with the same respondent.</li>
+    <li>Be polite and brief. You represent GW.</li>
+  </ul>
+  <p>GW's <a href="https://humanresearch.gwu.edu/determinations-0" target="_blank" rel="noopener">Office of Human Research</a> reviewed this project as a class exercise: the data are used in this class only and never published. The rules above are part of that.</p>
+</section>
+
+<section id="grading">
+  <h2>Grading</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Item</th><th class="num" style="text-align:right">Points</th></tr>
+    <tr><td>Pilot interview at your campus site (by Oct 16)</td><td class="pts">5</td></tr>
+    <tr><td>Pilot water survey at your campus site (by Oct 16)</td><td class="pts">5</td></tr>
+    <tr><td>Completed interviews: 5 × 9</td><td class="pts">45</td></tr>
+    <tr><td>Water surveys: 5 × 9</td><td class="pts">45</td></tr>
+    <tr class="total"><td>Total (15% of your course grade)</td><td class="pts">100</td></tr>
+  </table></div>
+  <p>You need one completed interview and one water survey at each of your 5 sites. Every submission is checked automatically:</p>
+  <ul>
+    <li><strong>GPS:</strong> interviews are recorded at or near one of <em>your</em> assigned sites, and the water seller is nearby.</li>
+    <li><strong>Photo:</strong> the water photo clearly shows the seller.</li>
+    <li><strong>Timing:</strong> interviews take a few minutes, not seconds.</li>
+    <li><strong>Answers:</strong> complete and plausible (prices, sizes).</li>
+  </ul>
+  <div class="callout"><strong>Academic integrity.</strong> Made-up, copied or recycled submissions are an academic integrity violation. I may ask you about any of your interviews. A project with fabricated data gets a zero and is referred under GW's Code of Academic Integrity.</div>
+</section>
+
+<section id="help">
+  <h2>Troubleshooting</h2>
+  <details><summary>My GWID isn't accepted, or no sites are listed</summary>
+    <p>Type only the 8 digits after the G, in both GWID boxes. If it is still rejected, you may be missing from the class list (for example, if you added the course late). Email me your GWID and I will add you, usually within a day.</p></details>
+  <details><summary>The GPS question says location is blocked</summary>
+    <p><strong>iPhone:</strong> Settings → Privacy &amp; Security → Location Services → turn it on, then Safari Websites → <em>While Using the App</em>, with Precise Location on. Reload the form.</p>
+    <p><strong>Android:</strong> turn on Location in the quick settings. Then in Chrome: ⋮ → Settings → Site settings → Location → allow <code>ee.kobotoolbox.org</code>. Reload the form.</p></details>
+  <details><summary>The GPS accuracy won't get to 10 m</summary>
+    <p>Stand in the open, away from tall buildings and trees, and wait 20–30 seconds. Turning on Wi-Fi helps even without connecting to a network. If it stops improving, accept the best reading you get.</p></details>
+  <details><summary>The camera won't open or the photo won't attach</summary>
+    <p>Allow camera access. On iPhone: Settings → Apps → Safari → Camera → Allow. On Android: Chrome → ⋮ → Settings → Site settings → Camera. If the camera still won't open, take the photo with your normal camera app and choose it from your library in the form.</p></details>
+  <details><summary>I have no signal</summary>
+    <p>Keep going. The form saves your submission on the phone and sends it when you next open the form with a connection. Check later that nothing is still waiting to be sent.</p></details>
+  <details><summary>The form says a survey hasn't been received, but I sent it</summary>
+    <p>Wait a few minutes, then close the form and open it again with signal. If you sent it offline, it is still on your phone: opening the form with a connection sends it. “Only refusals so far” means every interview you sent for that site was a refusal or under-18; you still need one completed interview there. If it still isn't showing after an hour, email me.</p></details>
+  <details><summary>I submitted a mistake, or submitted twice</summary>
+    <p>Fill in the form again for the same site and answer “Yes” to the correcting-a-mistake question. Only your latest submission for each site counts. No need to email me.</p></details>
+  <details><summary>I lost the home-screen icon</summary>
+    <p>Open the form again from the <a href="#links">links above</a>, then add it to your home screen again. Nothing is lost.</p></details>
+  <details><summary>A respondent wants to know where the facts come from</summary>
+    <p>The debrief screen links a source for each fact. You can show them the screen.</p></details>
+  <details><summary>I don't have a smartphone, or mine is broken</summary>
+    <p>Email me as early as possible so we can arrange an alternative. Don't wait until November.</p></details>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p>Check the troubleshooting section first, then email tanner_regan@gwu.edu with the subject line “ECON2151 - Project” and your full name.</p>
+</section>
+
+<section id="appendix">
+  <h2>Appendix: full survey transcripts</h2>
+  <p>Tap a survey to show every question, in the order the form asks them.</p>
+  <details id="transcript-a"><summary>Survey A: Interview</summary>
+    <ol class="qs"><li class="q">Do you agree to take part?<div class="opts">Yes · No</div></li><li class="q">Are you 18 or older? <span class="cond">only if they agree</span><div class="opts">Yes · No</div></li><li class="note"><span class="kind">On screen</span>Thank them for their time. Record your GPS location on the next screen and <strong>submit this form</strong> (it records that they did not take part), then start a new form for the next person. <span class="cond">only if they decline or are under 18</span></li><li class="grp">About you <span class="cond">asked only if they agree and are 18+</span></li><li class="q">How old are you?<div class="opts">Number</div></li><li class="q">Are you currently a student at a college or university?<div class="opts">Yes, at GW · Yes, somewhere else · No</div></li><li class="q">What is the highest level of school you have completed?<div class="opts">Less than high school · High school diploma or equivalent · Some college or associate degree · Bachelor&#x27;s degree · Graduate or professional degree · Prefer not to say</div></li><li class="q">Where do you live?<div class="opts">Washington DC · Elsewhere in the US · Outside the US</div></li><li class="q">Which state? <span class="cond">only if elsewhere in the US</span><div class="opts">List of US states and territories</div></li><li class="q">Which country? <span class="cond">only if outside the US</span><div class="opts">Text</div></li><li class="grp">Foreign aid <span class="cond">asked only if they agree and are 18+</span></li><li class="q">Think about everything the US federal government spends money on: for example Social Security, Medicare and other health programs, the military, interest on the national debt, and foreign aid. <strong>What percent of the federal budget do you think goes to foreign aid?</strong><div class="opts">Number</div></li><li class="note"><span class="kind">Read aloud</span><strong>Read aloud:</strong> <em>"In fact, foreign aid is less than 1% of the federal budget."</em> <span class="cond">treatment group only: the form picks a random half</span></li><li class="q">Do you think the US should spend more, about the same, or less on foreign aid?<div class="opts">More · About the same · Less · Don&#x27;t know</div></li><li class="q">What percent of the federal budget do you think would be best to spend on foreign aid?<div class="opts">Number</div></li><li class="grp">Global poverty <span class="cond">asked only if they agree and are 18+</span></li><li class="note"><span class="kind">On screen</span>Ask them <strong>not</strong> to look anything up. Guesses are fine.</li><li class="q">The World Bank sets an international poverty line for extreme poverty, measured in 2021 US dollars adjusted for differences in prices across countries (PPP). <strong>What is the current line, in dollars per person per day?</strong><div class="opts">Number</div></li><li class="q">What percent of the world's population do you think lives <strong>below</strong> this line <strong>today</strong>?<div class="opts">Number</div></li><li class="q">What percent of the world's population do you think lived below this line in <strong>1990</strong>?<div class="opts">Number</div></li><li class="note"><span class="kind">On screen</span><strong>Thank them, and share the answers:</strong><br><br><ul><li>Foreign aid is <strong>less than 1%</strong> of the federal budget. <a href="https://www.pewresearch.org/short-reads/2026/07/21/us-foreign-aid-is-plunging-in-second-trump-administration/" target="_blank" rel="noopener">source</a></li><li>The international poverty line is <strong>$3.00 a day</strong> (2021 PPP). <a href="https://www.worldbank.org/en/news/factsheet/2025/06/05/june-2025-update-to-global-poverty-lines" target="_blank" rel="noopener">source</a></li><li>About <strong>10%</strong> of the world lives below it today, down from about <strong>43%</strong> in 1990. <a href="https://ourworldindata.org/grapher/share-of-population-in-extreme-poverty" target="_blank" rel="noopener">source</a></li></ul></li><li class="q">Record your GPS location here at the site<div class="opts">GPS: wait for accuracy of 10 m or better</div></li></ol></details>
+  <details id="transcript-b"><summary>Survey B: Water</summary>
+    <ol class="qs"><li class="note"><span class="kind">On screen</span>From the site's meeting point, walk to the <strong>nearest</strong> place that sells bottled water (food truck, kiosk, café, shop, vending machine...).</li><li class="q">What kind of place is it?<div class="opts">Food truck or cart · Park kiosk / refreshment stand · Museum café or shop · Restaurant or café (not in a museum) · Convenience store / pharmacy (e.g. CVS) · Grocery store / supermarket · Vending machine · Other</div></li><li class="q">Describe the place <span class="cond">only if “Other”</span><div class="opts">Text</div></li><li class="q">Take a photo of the vendor<div class="opts">Photo</div></li><li class="note"><span class="kind">On screen</span>Find the bottle of <strong>plain water</strong> closest to <strong>500 ml (16.9 oz)</strong>.</li><li class="q">Brand<div class="opts">Dasani · Aquafina · Poland Spring · Deer Park · Nestlé Pure Life · Smartwater · Fiji · Evian · Store brand · Other</div></li><li class="q">Which brand? <span class="cond">only if “Other”</span><div class="opts">Text</div></li><li class="q">Size of the bottle, in fluid ounces (oz)<div class="opts">Number</div></li><li class="q">Price of this bottle, in US dollars<div class="opts">Number</div></li><li class="note"><span class="kind">On screen</span>That is an unusually high price. Please double-check it before continuing. <span class="cond">only if the price is over $8</span></li><li class="q">How did you find the price?<div class="opts">Shown on a sign or menu · On a shelf tag or the bottle · Had to ask · Shown on the vending machine</div></li><li class="note"><span class="kind">On screen</span>Price per liter: <strong>$${price_per_liter}</strong>. If that looks wrong, go back and check the size and price. <span class="cond">shown automatically</span></li><li class="q">Is there any food item (not drink) that you could buy here for under $5?<div class="opts">Yes · No</div></li><li class="q">Record your GPS location here at the vendor<div class="opts">GPS: wait for accuracy of 10 m or better</div></li></ol></details>
+</section>
+
+<footer>Maps © OpenStreetMap contributors.</footer>
+<script>
+  // links to a transcript open it before jumping there
+  function openTx(id) { const d = document.getElementById(id); if (d) d.open = true; }
+  document.querySelectorAll('a.open-tx').forEach(a =>
+    a.addEventListener('click', () => openTx(a.getAttribute('href').slice(1))));
+  if (location.hash.startsWith('#transcript-')) openTx(location.hash.slice(1));
+</script>
+</div>
